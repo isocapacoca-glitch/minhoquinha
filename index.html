@@ -1,38 +1,63 @@
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Minhoquinha 🐍</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhoquinha</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main class="game-shell">
+    <header>
+      <p class="eyebrow">JOGO CLÁSSICO</p>
+      <h1>🐍 Minhoquinha</h1>
+      <p class="subtitle">Coma as frutinhas e faça muitos pontos!</p>
+    </header>
 
-    <div class="game-container">
-        <h1>🐍 Minhoquinha</h1>
-        <p>Coma as frutas e cresça!</p>
+    <section class="scoreboard">
+      <div class="score-card">
+        <span>PONTOS</span>
+        <strong id="score">0</strong>
+      </div>
+      <div class="score-card">
+        <span>RECORDE</span>
+        <strong id="best">0</strong>
+      </div>
+    </section>
 
-        <div class="score">
-            Pontuação: <span id="score">0</span>
+    <div class="canvas-wrap">
+      <canvas id="game" width="400" height="400"></canvas>
+      <div id="message" class="message">
+        <div class="message-card">
+          <span class="message-icon">🍎</span>
+          <h2 id="message-title">Pronto para jogar?</h2>
+          <p id="message-text">
+            Use as setas do teclado ou WASD para controlar.
+          </p>
+          <button id="start-btn">Começar jogo</button>
         </div>
-
-        <canvas id="game" width="400" height="400"></canvas>
-
-        <h2 id="message">Boa sorte!</h2>
-
-        <button onclick="restartGame()">Jogar novamente</button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="controls">
+      <button id="pause-btn" class="secondary" disabled>⏸ Pausar</button>
+      <button id="restart-btn" class="secondary">↻ Reiniciar</button>
+    </div>
+
+    <div class="mobile-controls">
+      <button data-dir="up">▲</button>
+      <div class="middle-controls">
+        <button data-dir="left">◀</button>
+        <button data-dir="down">▼</button>
+        <button data-dir="right">▶</button>
+      </div>
+    </div>
+
+    <p class="hint">Não bata nas paredes nem no próprio corpo!</p>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
-<div class="mobile-controls">
-    <button onclick="changeDirection('UP')">⬆️</button>
-    <div>
-        <button onclick="changeDirection('LEFT')">⬅️</button>
-        <button onclick="changeDirection('DOWN')">⬇️</button>
-        <button onclick="changeDirection('RIGHT')">➡️</button>
-    </div>
-</div>

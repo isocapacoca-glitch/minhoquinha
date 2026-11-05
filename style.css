@@ -1,94 +1,205 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --bg: #101827;
+  --green: #8be28b;
+  --text: #f4f7fb;
+  --muted: #a9b6c9;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(135deg, #101820, #203a43);
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 14px;
+  background: radial-gradient(circle at top, #243a55, var(--bg) 58%);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
 }
 
-.game-container {
-    text-align: center;
-    background: #182c25;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px #00ff8870;
-    max-width: 100%;
+.game-shell {
+  width: min(100%, 500px);
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .22em;
 }
 
 h1 {
-    color: #00ff88;
-    margin-bottom: 10px;
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 900;
 }
 
-p {
-    margin-bottom: 15px;
-    color: #ccc;
+.subtitle {
+  color: var(--muted);
+  margin: 9px 0 22px;
 }
 
-.score {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #ffff66;
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.score-card {
+  min-width: 116px;
+  padding: 9px 18px;
+  border: 1px solid #354761;
+  border-radius: 14px;
+  background: #1b2940cc;
+}
+
+.score-card span {
+  display: block;
+  color: var(--muted);
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.score-card strong {
+  font-size: 1.55rem;
+}
+
+#best {
+  color: var(--green);
+}
+
+.canvas-wrap {
+  position: relative;
+  width: min(100%, 400px);
+  margin: auto;
+  padding: 8px;
+  border: 1px solid #405673;
+  border-radius: 18px;
+  background: #17243a;
+  box-shadow: 0 18px 50px #0005;
 }
 
 canvas {
-    background: #09140f;
-    border: 4px solid #00ff88;
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 11px;
+  background: #dff3d8;
 }
 
-h2 {
-    margin: 15px 0;
-    font-size: 18px;
-    color: #00ff88;
+.message {
+  position: absolute;
+  inset: 8px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border-radius: 11px;
+  background: #102018bb;
+  backdrop-filter: blur(4px);
+}
+
+.message.hidden {
+  display: none;
+}
+
+.message-card {
+  width: min(100%, 290px);
+  padding: 22px 18px;
+  border: 1px solid #ffffff30;
+  border-radius: 18px;
+  background: #182b28f2;
+}
+
+.message-icon {
+  font-size: 2rem;
+}
+
+.message h2 {
+  margin: 7px 0;
+}
+
+.message p {
+  color: #d0ded4;
 }
 
 button {
-    background: #00ff88;
-    color: #102018;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 19px;
+  color: #102018;
+  background: var(--green);
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  transition: .15s;
 }
 
 button:hover {
-    background: #00cc6a;
-    transform: scale(1.05);
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button.secondary {
+  color: var(--text);
+  background: #2a3b54;
+  border: 1px solid #435773;
 }
 
 .mobile-controls {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.mobile-controls div {
-    display: flex;
-    gap: 10px;
+  display: none;
+  margin: 16px auto 0;
 }
 
 .mobile-controls button {
-    width: 55px;
-    height: 50px;
-    font-size: 22px;
-    padding: 5px;
-    touch-action: manipulation;
+  width: 52px;
+  height: 46px;
+  padding: 0;
+  color: var(--text);
+  background: #2a3b54;
+  border: 1px solid #435773;
+  font-size: 1.15rem;
+}
+
+.middle-controls {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.hint {
+  margin-top: 17px;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+@media (max-width: 600px) {
+  .mobile-controls {
+    display: block;
+  }
+
+  .subtitle {
+    font-size: .9rem;
+  }
 }
