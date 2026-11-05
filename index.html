@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Minhoquinha 🐍</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>🐍 Minhoquinha</h1>
+        <p>Coma as frutas e cresça!</p>
+
+        <div class="score">
+            Pontuação: <span id="score">0</span>
+        </div>
+
+        <canvas id="game" width="400" height="400"></canvas>
+
+        <h2 id="message">Boa sorte!</h2>
+
+        <button onclick="restartGame()">Jogar novamente</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<div class="mobile-controls">
+    <button onclick="changeDirection('UP')">⬆️</button>
+    <div>
+        <button onclick="changeDirection('LEFT')">⬅️</button>
+        <button onclick="changeDirection('DOWN')">⬇️</button>
+        <button onclick="changeDirection('RIGHT')">➡️</button>
+    </div>
+</div>
